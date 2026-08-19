@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Brisbane Climate Change Awareness</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- INSERT LOGO -->
+        <div class="logo">
+            <a href="home.html"><img src="images/logo.png" alt="Brisbane Climate Change Awareness Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <!-- LINK NAVIGATION -->
+                <!-- Main site navigation menu -->
+                <!-- Highlights current page (Contact) with class "active" -->
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="heatwaves.html">Heatwaves</a></li>
+                <li><a href="wildlife.html">Wildlife Disruption</a></li>
+                <li><a href="emissions.html">Greenhouse Gas emission</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <a href="search.html" class="search-icon">
+            <img src="images/search-icon.png" alt="Search">
+        </a>
+    </header>
+
+    <main>
+        <!-- Contact input form and office infoamtion  -->
+        <section class="contact-section">
+            <h1>Contact</h1>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form action="message-sent.html" method="post">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn submit-btn">SEND MESSAGE</button>
+                    </form>
+                </div>
+                <!-- Office information section -->
+                <!-- This section provides information about the Brisbane City Council office -->
+                <div class="office-info">
+                    <h2>Find a office centre</h2>
+                    <div class="office-content">
+                        <div class="office-text">
+                            <p>Council staff can provide information and advice on topics including:</p>
+                            <ul>
+                                <li>Heatwaves</li>
+                                <li>Wildlife</li>
+                                <li>Gas Emission</li>
+                            </ul>
+                        </div>
+                        <!-- using the google map link  -->
+                        <div class="map">
+                            <a href="https://www.google.com/maps/search/brisbane+city+hall" target="_blank">
+                                <img src="images/office-map.jpg" alt="Office Center Map" class="office-map">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER INFOMATION  -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Brisbane Climate Change Awareness Logo">
+                <p>© 2025 Brisbane Climate Change Awareness</p>
+                <small class="image-credits">Image credits: All images used in this website are sourced from Unsplash, Pixabay, or referenced academic articles. For academic purposes only.</small>
+            </div>
+            <div class="footer-links">
+                <a href="home.html">Home</a> 
+                <a href="heatwaves.html">Heatwave</a> 
+                <a href="wildlife.html">Wildlife Disruption</a> 
+                <a href="emissions.html">Greenhouse Gas Emission</a> 
+                <a href="contact.html">Contact</a> 
+                <a href="about.html">About</a>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Phone: 00 1234 4567</p>
+                <p>Interpreter Service: 12-34-00</p>
+                <p>Service Hours: Monday-Friday, 9:00 AM-5:00 PM</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

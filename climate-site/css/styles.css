@@ -1,0 +1,1003 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* root set up for global style */
+/* This root's used to set up global styles for the website */
+:root {
+    --main-color: #2D7A45;
+    --background-color: #F5F5DC;
+    --highlight-color: #F0C808;
+    --text-color-dark: #333;
+    --text-color-light: #fff;
+    --border-color: #CDD9C6;
+    --main-font: 'Roboto', Arial, sans-serif;
+    --font-size: 16px;
+    --space-small: 10px;
+    --space-medium: 20px;
+    --space-large: 30px;
+    --space-xlarge: 50px;
+    --radius-small: 3px;
+    --radius-medium: 5px;
+    --radius-large: 10px;
+    --transition: 0.3s ease;
+    --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+/* global reset */
+/* This sets up a consistency in the design and layout of the website */ 
+* {
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base elements */
+/* This is used to set the base elements for the website */
+body {
+    font-family: var(--main-font);
+    background: var(--text-color-light);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+}
+/* Set font sizes for headings and paragraphs */
+/* This is used to set the heading and paragraph font sizes for the website */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #000;
+    margin-bottom: var(--space-medium);
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+}
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+h3 {
+    font-size: 1.6rem;
+}
+p {
+    margin-bottom: var(--space-medium);
+    font-size: 1.2rem;
+}
+a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+/* Removes green outline box on link click/focus */
+a:focus,
+a:active {
+    outline: none;
+    box-shadow: none;
+}
+/* Buttons */
+/* This is used to set the button styles for the website */
+/* Provide a consistent design and functionality for buttons */
+.btn,
+.submit-btn {
+    background: var(--highlight-color);
+    color: var(--text-color-dark);
+    border: none;
+    border-radius: var(--radius-medium);
+    font-size: var(--font-size);
+    font-weight: bold;
+    padding: var(--space-small) var(--space-medium);
+    text-align: center;
+    transition: background var(--transition), color var(--transition);
+}
+/* set up button hover */
+/* Once you hover on the button, it will change the background color and text color  */
+.btn:hover,
+.submit-btn:hover {
+    background: var(--main-color);
+    color: var(--text-color-light);
+}
+/* Cards */
+/* This is used to set the card styles for the website */
+.card,
+.category,
+.benefit {
+    background: var(--background-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+    overflow: hidden;
+    margin: var(--space-medium) 0;
+    padding: var(--space-medium);
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+.card {
+    width: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.card img,
+.category img,
+.benefit img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-medium);
+    transition: transform var(--transition);
+}
+/* set up card hover */
+/* Once you hover on the card, it will active the transformation of the card.  */
+.card:hover,
+.category:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+}
+.card:hover img,
+.category:hover img {
+    transform: none;
+}
+.card-link {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    padding: 12px 0;
+    color: var(--main-color);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color var(--transition);
+}
+.card-link:hover {
+    color: var(--text-color-dark);
+    text-decoration: underline;
+}
+/* Header & Navigation */
+/* This is used to set the header and navigation styles for the website */
+header {
+    background: var(--background-color);
+    padding: var(--space-small) var(--space-large);
+    margin: 0;
+    box-shadow: var(--shadow-small);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+/* website logo style 
+this is used to set the logo style for the website */
+.logo {
+    flex: 0 0 auto;
+}
+
+.logo img {
+    max-width: 150px;
+    height: auto;
+    transition: transform 0.5s;
+    display: block;
+}
+
+.logo img:hover {
+    animation: logo-spin-3d 0.8s linear;
+}
+/* animation */
+/* once it is on hover, it will active the animation  */
+@keyframes logo-spin-3d {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+/* navagatuin funtanlity implement design */
+nav {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--space-medium);
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #000;
+    font-family: var(--main-font);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: var(--space-small) 0;
+    transition: color var(--transition);
+}
+nav a.active,
+nav a:hover {
+    color: var(--main-color);
+}
+.search-icon {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    z-index: 1;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 180px; 
+}
+
+.search-icon img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    transition: opacity var(--transition);
+    display: block;
+}
+
+.search-icon:hover img {
+    opacity: 1;
+}
+/* video Section */
+/* This is used to set the video section styles for the website */
+/* This section is used to set the video position style on home page. */
+.video {
+    background: #ffffff;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.video h1,
+.video p {
+    color: #ffffff ;
+}
+.video-content {
+    position: relative;
+    max-width: 800px;
+    padding: var(--space-large);
+}
+.video-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-medium);
+}
+.video {
+    background-image: url(../images/hero-background.gif);
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+    position: relative;
+}
+.video:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+/* Forms */
+/* This represents the form styles for the news letter on Home page */
+.form-group {
+    margin-bottom: var(--space-medium);
+}
+.form-control {
+    width: 100%;
+    padding: var(--space-small);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-small);
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+}
+
+.information {
+    display: block;
+    background-color: var(--background-color);
+    padding: var(--space-small);
+    border-radius: var(--radius-small);
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: var(--space-small);
+    cursor: pointer;
+}
+/* short heatwave survival tips list */
+.tips-list .information {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+}
+/* Highlights Section */
+.highlights {
+    padding: var(--space-xlarge) 0;
+    text-align: center;
+}
+.highlight-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-large);
+    margin-top: var(--space-large);
+}
+/* Newsletter Section */
+.newsletter {
+    display: flex;
+    background-color: var(--main-color);
+    color: #fff;
+    padding: var(--space-xlarge) 0;
+}
+
+.newsletter-content {
+    flex: 1;padding: 0 var(--space-large);display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+.newsletter-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsletter-image img {
+    max-width: 100%;height: auto;border-radius: var(--radius-large);
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: var(--space-medium);
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: var(--space-small);
+    border: none;
+    border-radius: var(--radius-medium) 0 0 var(--radius-medium);
+}
+
+.newsletter-form .btn {border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+}
+
+.newsletter h2,
+.newsletter p {
+    color: #ffffff;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    padding: var(--space-medium) 0;
+    margin: 0;
+    background: var(--background-color);
+}
+
+.footer-content {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-large);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-small);
+    flex: 1;
+}
+
+.footer-logo img {
+    max-width: 80px;
+    height: auto;
+    display: block;
+}
+
+.footer-contact {
+    text-align: right;
+    font-size: 0.9rem;
+    flex: 1;
+    padding-right: var(--space-medium);
+}
+
+.footer-links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-small);
+}
+
+.footer-links a {
+    color: #000;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color var(--transition);
+    padding: 2px 0;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color: var(--main-color);
+}
+
+.image-credits {
+    font-size: 0.8rem;
+    color: #666;
+    max-width: 300px;
+}
+/* Intro Section (Heatwaves, Wildlife, Emissions) */
+.intro-section {
+    padding: var(--space-xlarge) var(--space-large);
+    background-color: var(--background-color);
+    margin-bottom: var(--space-xlarge);
+}
+
+.intro-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-large);
+    margin-top: var(--space-large);
+}
+.intro-text {
+    flex: 1;
+    min-width: 300px;
+}
+.intro-image,
+.intro-images {
+    flex: 1;
+    min-width: 300px;
+}
+.intro-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-medium);
+}
+.image-gallery {
+    display: flex;
+    gap: var(--space-small);
+}
+.gallery-item {
+    flex: 1;
+    text-align: center;
+}
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-small);
+}
+/* Map and Graph Section */
+.map-graph {
+    padding: var(--space-xlarge) var(--space-large);
+    background-color: var(--background-color);
+    text-align: center;
+}
+.map-graph-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-large);
+    justify-content: center;
+    margin-top: var(--space-large);
+}
+.map-container,
+.graph-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 700px;
+}
+.map-image img,
+.graph-image img {
+    width: 100%;
+    height: 495px;
+    object-fit: cover;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-medium);
+    margin-top: var(--space-large);
+}
+/* Survival Tips Section */
+.survival-tips {
+    padding: var(--space-xlarge) var(--space-large);
+}
+.tips-container {
+    display: flex;
+    align-items: stretch;
+    gap: 450px;
+}
+.tips-list {
+    width: 100%;
+    max-width: 500px;
+    min-width: 300px;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.tips-image {
+    width: 100%;
+    max-width: 500px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.tips-image img {
+    width: 100%;
+    max-width: 500px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: var(--radius-medium);
+}
+/* Wildlife Categories Section */
+.wildlife-types {
+    padding: var(--space-xlarge) var(--space-large);
+    background-color: var(--text-color-ligh);
+    text-align: center;
+}
+.wildlife-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-large);
+    justify-content: center;
+    margin-top: var(--space-large);
+}
+/* category style */
+.category {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    background-color: var(--background-color);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+}
+.category img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+}
+.category:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-medium);
+    cursor: pointer;
+}
+.category h3 {
+    padding: var(--space-medium) var(--space-medium) 0;
+}
+.category p {
+    padding: 0 var(--space-medium) var(--space-medium);
+}
+
+.category:hover img {
+    transform: scale(1.1);
+}
+
+/* Emissions Intro Section */
+.emissions-intro {
+    padding: var(--space-xlarge) var(--space-large);
+}
+
+.intro-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-large);
+}
+
+.intro-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.intro-column img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-medium);
+}
+
+/* Transport Comparison Section */
+/* contains the transport comparison section styles for the website
+having two images side by side and the text in the middle */ 
+.comparison-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-large);
+    margin-top: var(--space-large);
+    background-color: var(--background-color);
+    padding: var(--space-medium);
+    border-radius: var(--radius-medium);
+}
+.bar-chart img {
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+/* Emission Benefits Section */
+.emission-benefits {
+    padding: var(--space-xlarge) var(--space-large);
+    text-align: center;
+}
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-large);
+    justify-content: center;
+    margin-top: var(--space-large);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.benefit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.benefit img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-medium);
+    padding-top: 0;
+}
+
+.benefit h3 {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: var(--space-medium) 0;
+}
+/* About Section */
+.about-section {
+    padding: var(--space-xlarge) var(--space-large);
+    background-color: var(--background-color);
+    min-height: calc(100vh - 300px);
+    margin-bottom: var(--space-xlarge);
+}
+.about-section h1 {
+    text-align: center;
+    color: var(--text-color-dark);
+    font-size: 2rem;
+    margin-bottom: var(--space-large);
+    position: relative;
+}
+.about-section h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--highlight-color);
+    margin: var(--space-small) auto;
+    border-radius: var(--radius-small);
+}
+.about-container>div {
+    background-color: var(--text-color-light);
+    padding: var(--space-large);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+    margin-bottom: var(--space-large);
+
+}
+.about-container>div:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+.about-container p,
+.about-container ul li {
+    color: var(--text-color-dark);
+    margin-bottom: var(--space-small);
+    line-height: 1.6;
+}
+/* Contact Section */
+.contact-section {
+    padding: var(--space-xlarge) var(--space-large);
+}
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-large);
+    margin-top: var(--space-large);
+}
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+}
+.form-group {
+    margin-bottom: var(--space-medium);
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--space-small);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-small);
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+}
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+.office-info {
+    flex: 1;
+    min-width: 300px;
+}
+/* Search Section */
+/* represents the search section styles for the website */
+.search-section {
+    width: 100%;
+    margin: 0;
+    padding: var(--space-medium) var(--space-large);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 300px);
+}
+.search-container {
+    width: 100%;
+    max-width: 600px;
+}
+.search-form {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+.search-input {
+    flex: 1;
+    padding: var(--space-medium);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: var(--font-size-large);
+    background-color: var(--background-color);
+}
+.search-button {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+.reset-button {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color-dark);
+}
+.card,
+.category,
+.benefit {
+    animation: fadeIn 0.5s ease-out;
+}
+/* office hover and naviagation */
+.office-content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-medium);
+}
+.office-text {
+    flex: 1;
+}
+
+.office-text ul {
+    margin-top: var(--space-small);
+}
+.office-map {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    transition: transform var(--transition);
+    object-fit: cover;
+}
+.office-map:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-medium);
+    cursor: pointer;
+}
+
+/* detail animal description */
+/* This section includes the animal in danger description in details  */
+.animal-descriptions {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+}
+/* Bring up modal using target */
+.animal-descriptions:target {
+    display: block;
+}
+.description-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 40px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: var(--radius-large);
+}
+.description-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.description-content ul li {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+.description-content ul li strong {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 8px;
+}
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+.centered-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* focus on the input */
+/*  easy usuablity for users */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+summary:focus {
+    outline: 2px solid var(--main-color);
+    outline-offset: 2px;
+}
+
+/* This section contains the media queries for responsive design, 
+whcih is used to make the website responsive and adapt to different screen sizes. */
+@media (max-width: 900px) {
+
+    .highlight-cards,
+    .intro-content,
+    .map-graph-content,
+    .comparison-container,
+    .benefits-container,
+    .wildlife-categories,
+    .footer-content,
+    .tips-container,
+    .newsletter {
+        flex-direction: column;
+        display: flex;
+        gap: 20px;
+        align-items: stretch;
+    }
+    .card,
+    .category,
+    .benefit,
+    .map-container,
+    .graph-container,
+    .intro-text,
+    .intro-image,
+    .tips-list,
+    .tips-image,
+    .newsletter-content,
+    .newsletter-image,
+    .about-container>div,
+    .contact-form,
+    .office-info {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+    }
+    .card img,
+    .category img,
+    .benefit img,
+    .map-image img,
+    .graph-image img,
+    .tips-image img,
+    .intro-image img,
+    .newsletter-image img {
+        height: auto;
+        max-width: 100%;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 10px;
+    }
+    .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search-section {
+        padding: 30px 10px;
+        height: auto;
+    }
+    footer {
+        padding: 6px 0;
+    }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 0 var(--space-medium);
+    }
+    .footer-logo {
+        align-items: center;
+    }
+    .footer-contact {
+        text-align: center;
+    }
+    .footer-links {
+        gap: 1px;
+    }
+    .image-credits {
+        text-align: center;
+        max-width: 200px;
+    }
+}
