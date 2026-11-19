@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brick Market · Laravel Web App | Syd Khursheed</title>
+<meta name="description" content="Brick Market: a full-stack Laravel marketplace built by Syd Khursheed for Web Application Development at Griffith University. Auth, CRUD, ownership rules, image upload, search, cart, transactional checkout, admin role and 38 automated tests.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0f1226; --bg2:#1a1f3c; --ink:#eef0fa; --ink-soft:#b9bfdd;
+  --glass:rgba(255,255,255,.055); --glass-hi:rgba(255,255,255,.10);
+  --line:rgba(255,255,255,.14); --gold:#d8b46a; --teal:#7fd8d0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--ink);min-height:100vh;
+  background:linear-gradient(160deg,var(--bg1) 0%,var(--bg2) 55%,#141833 100%);overflow-x:hidden;line-height:1.6}
+.aura{position:fixed;border-radius:50%;filter:blur(110px);opacity:.32;z-index:0;pointer-events:none}
+.aura.a{width:520px;height:520px;background:#3b4b9e;top:-140px;left:-120px}
+.aura.b{width:460px;height:460px;background:#6c5b8f;bottom:-160px;right:-100px}
+.wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:36px 20px 80px}
+a{color:var(--teal)}
+.back{display:inline-block;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--teal);margin-bottom:34px}
+.back:hover{color:var(--gold)}
+header{margin-bottom:40px}
+.kicker{letter-spacing:.3em;text-transform:uppercase;font-size:.72rem;color:var(--gold);margin-bottom:14px;font-weight:500}
+h1{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2.4rem,6vw,3.8rem);line-height:1.05}
+h1 span{color:var(--gold)}
+.lead{margin-top:16px;max-width:720px;color:var(--ink-soft);font-weight:300;font-size:clamp(1rem,2.2vw,1.12rem)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.chip{padding:7px 15px;border:1px solid var(--line);border-radius:999px;font-size:.8rem;color:var(--ink-soft);background:var(--glass)}
+.chip b{color:var(--gold);font-weight:600}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2rem);font-weight:600;color:var(--gold);margin:56px 0 18px}
+p{color:var(--ink-soft);font-weight:300}
+p+p{margin-top:12px}
+.quote{border-left:2px solid var(--gold);padding:6px 0 6px 18px;margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--ink);font-style:italic}
+/* hero shot */
+.shot{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 30px 70px -30px rgba(0,0,0,.7);cursor:zoom-in}
+.shot img{display:block;width:100%;height:auto}
+figure{margin:0}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:10px;font-weight:300}
+figcaption b{color:var(--ink);font-weight:500}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.pair{display:grid;grid-template-columns:2fr 1fr;gap:26px;margin-bottom:26px;align-items:start}
+@media(max-width:700px){.gallery,.pair{grid-template-columns:1fr}}
+/* decision cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{padding:24px 22px;border-radius:18px;background:var(--glass);border:1px solid var(--line)}
+.card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.card p{font-size:.9rem}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.85em;color:var(--teal);background:rgba(127,216,208,.08);padding:1px 5px;border-radius:5px}
+/* feature list */
+.feat{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 28px}
+.feat li{position:relative;padding-left:20px;color:var(--ink-soft);font-weight:300;font-size:.94rem}
+.feat li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.feat li b{color:var(--ink);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:.8rem;color:var(--ink-soft)}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:6px}
+.stat div{padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--glass);text-align:center}
+.stat b{display:block;font-family:'Cormorant Garamond',serif;font-size:2.1rem;color:var(--gold);line-height:1.1}
+.stat span{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.note{margin-top:48px;padding:20px 22px;border-radius:16px;border:1px dashed var(--line);font-size:.86rem}
+.note p{font-size:.86rem}
+footer{text-align:center;margin-top:56px;color:var(--ink-soft);font-size:.8rem;font-weight:300}
+footer a{text-decoration:none}
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(8,10,24,.9);display:none;align-items:center;justify-content:center;padding:20px;z-index:50;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:92vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+</style>
+</head>
+<body>
+<div class="aura a"></div><div class="aura b"></div>
+<div class="wrap">
+
+<a class="back" href="../index.html">← Back to portfolio</a>
+
+<header>
+  <div class="kicker">Full-stack web application · Griffith University</div>
+  <h1>Brick <span>Market</span></h1>
+  <p class="lead">A marketplace where kids can list their used Lego sets and sell them to friends. I designed and built it end to end in Laravel for Web Application Development (3004ICT): database, authentication, business rules, checkout and automated tests.</p>
+  <div class="chips">
+    <div class="chip">Course grade <b>7 / 7</b></div>
+    <div class="chip">Laravel 13 · PHP · SQLite</div>
+    <div class="chip"><b>38</b> automated tests passing</div>
+    <div class="chip">5 related tables</div>
+    <div class="chip">Trimester 2, 2026</div>
+  </div>
+</header>
+
+<figure>
+  <div class="shot" data-full="img/browse.jpg"><img src="img/browse.jpg" alt="Brick Market browse page showing a grid of sets for sale with a search box and theme filter" loading="eager"></div>
+  <figcaption><b>Browse.</b> Search by keyword, filter by theme, six sets per page. The filters stay in the page links, and related data is eager-loaded to avoid N+1 queries.</figcaption>
+</figure>
+
+<h2>Why I built it</h2>
+<p>I started from one sentence and made every feature earn its place against it:</p>
+<p class="quote">“This app helps my son list and sell his used Lego sets to his friends.”</p>
+<p>That kept the scope honest. Swapping, online payments and stock quantities were left out on purpose and written up as future work. Because each listing is one physical set, a listing is simply <em>available</em> or <em>sold</em>, which removes the whole stock-counting problem.</p>
+
+<h2>What it does</h2>
+<ul class="feat">
+  <li><b>Accounts and login</b> with Laravel Breeze; the user's name is shown on every page</li>
+  <li><b>Full CRUD on listings</b>, with server-side validation on every field</li>
+  <li><b>Ownership rules enforced on the server</b>: editing someone else's set returns 403, even with a crafted URL</li>
+  <li><b>Photo upload</b> (JPG/PNG/WEBP up to 2&nbsp;MB), with old files cleaned up on replace or delete</li>
+  <li><b>Search, theme filter and pagination</b> on the browse page</li>
+  <li><b>Session cart and checkout</b> that turns the cart into an order</li>
+  <li><b>Private order history</b>: only the buyer can open their own orders</li>
+  <li><b>Admin role</b> via custom middleware, to manage the theme list</li>
+  <li><b>Sold sets are locked</b> and can't be edited or deleted</li>
+  <li><b>Responsive layout</b> with Tailwind CSS, from phone to desktop</li>
+</ul>
+
+<h2>Screens</h2>
+<div class="pair">
+  <figure>
+    <div class="shot" data-full="img/detail.jpg"><img src="img/detail.jpg" alt="Listing detail page with price, theme, condition, seller and Add to cart button" loading="lazy"></div>
+    <figcaption><b>Listing detail.</b> Status, condition, seller and a single “Add to cart” action.</figcaption>
+  </figure>
+  <figure>
+    <div class="shot" data-full="img/mobile.jpg"><img src="img/mobile.jpg" alt="Brick Market browse page on a phone-sized screen" loading="lazy"></div>
+    <figcaption><b>On a phone.</b> The same pages reflow cleanly on small screens.</figcaption>
+  </figure>
+</div>
+<div class="gallery">
+  <figure>
+    <div class="shot" data-full="img/cart.jpg"><img src="img/cart.jpg" alt="Shopping cart with two sets and a total" loading="lazy"></div>
+    <figcaption><b>Cart.</b> Held in the session and re-checked against the database at checkout.</figcaption>
+  </figure>
+  <figure>
+    <div class="shot" data-full="img/order.jpg"><img src="img/order.jpg" alt="Order detail page listing the set bought, the seller and the price paid" loading="lazy"></div>
+    <figcaption><b>Order.</b> Shows the <em>price paid</em>, stored at checkout, not today's price.</figcaption>
+  </figure>
+  <figure>
+    <div class="shot" data-full="img/validation.jpg"><img src="img/validation.jpg" alt="Sell a set form showing a validation message under each empty field" loading="lazy"></div>
+    <figcaption><b>Validation.</b> Every field is checked on the server, with clear messages.</figcaption>
+  </figure>
+  <figure>
+    <div class="shot" data-full="img/admin.jpg"><img src="img/admin.jpg" alt="Admin page for adding, renaming and deleting themes" loading="lazy"></div>
+    <figcaption><b>Admin.</b> Behind custom middleware. A theme that is still in use can't be deleted.</figcaption>
+  </figure>
+</div>
+
+<h2>Engineering decisions I can defend</h2>
+<div class="cards">
+  <div class="card">
+    <h3>Price is copied at checkout</h3>
+    <p>The order lines live in an <code>order_listing</code> pivot table that stores <code>price_at_purchase</code>. If a seller changes a price later, it can't rewrite what someone actually paid.</p>
+  </div>
+  <div class="card">
+    <h3>Checkout is all or nothing</h3>
+    <p>Checkout runs inside a database transaction. It re-reads each set, skips anything already sold or owned by the buyer, writes the order and marks the sets sold. If anything fails, no half-made order is left behind.</p>
+  </div>
+  <div class="card">
+    <h3>Security on the server, not the button</h3>
+    <p>Hiding an Edit button isn't security. Every update and delete checks ownership first and returns <code>403</code>. Admin pages sit behind a custom <code>EnsureUserIsAdmin</code> middleware.</p>
+  </div>
+  <div class="card">
+    <h3>Mass-assignment protection</h3>
+    <p>New listings are created through the user relationship, and <code>user_id</code> and <code>status</code> aren't fillable, so a tampered form can't change who owns a set or mark it sold.</p>
+  </div>
+</div>
+
+<figure style="margin-top:26px">
+  <div class="shot" data-full="img/forbidden.jpg"><img src="img/forbidden.jpg" alt="403 error page: You can only change your own listings" loading="lazy"></div>
+  <figcaption><b>Tested by attacking it.</b> Logged in as one user and typing the edit URL of another user's set gives a 403.</figcaption>
+</figure>
+
+<h2>Data model</h2>
+<figure>
+  <div class="shot" data-full="img/erd.jpg"><img src="img/erd.jpg" alt="Entity relationship diagram with users, listings, themes, orders and the order_listing pivot table" loading="lazy"></div>
+  <figcaption><b>Five related tables.</b> Users sell listings and place orders; themes categorise listings; orders and listings meet in a many-to-many pivot.</figcaption>
+</figure>
+
+<h2>Testing</h2>
+<div class="stat">
+  <div><b>38</b><span>Feature tests</span></div>
+  <div><b>104</b><span>Assertions</span></div>
+  <div><b>0</b><span>Failures</span></div>
+</div>
+<p style="margin-top:16px">PHPUnit feature tests cover authentication, listing CRUD and validation, ownership (403 for non-owners), photo upload, cart and checkout including price-at-purchase, order privacy, and admin-only access. Some tests deliberately try to attack the app, for example signing up with <code>is_admin</code> in the form, or taking over someone else's listing through mass assignment.</p>
+
+<h2>Built with</h2>
+<div class="tags">
+  <span>Laravel 13</span><span>PHP 8</span><span>Eloquent ORM</span><span>SQLite</span><span>Blade templates</span><span>Laravel Breeze</span><span>Tailwind CSS</span><span>Vite</span><span>PHPUnit</span><span>MVC</span><span>Middleware</span><span>DB transactions</span><span>draw.io ERD</span><span>Linux server deployment</span>
+</div>
+
+<div class="note">
+  <p><b style="color:var(--ink)">About this page.</b> Screenshots come from a local run of the final submission with its fictional demo accounts. Product photos are replaced with placeholder illustrations. The source code is coursework, so I share it on request rather than publicly. I'm happy to walk through it in an interview.</p>
+</div>
+
+<footer>
+  <p><a href="../index.html">← Back to portfolio</a> · Syd Khursheed · Brisbane, QLD</p>
+</footer>
+</div>
+
+<div class="lb" id="lb" aria-hidden="true"><img alt="" id="lbimg"></div>
+<script>
+const lb=document.getElementById('lb'),lbi=document.getElementById('lbimg');
+document.querySelectorAll('.shot').forEach(s=>s.addEventListener('click',()=>{lbi.src=s.dataset.full;lbi.alt=s.querySelector('img').alt;lb.classList.add('open')}));
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+</script>
+</body>
+</html>
